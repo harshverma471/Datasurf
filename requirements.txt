@@ -1,0 +1,33 @@
+# core data
+pandas
+numpy
+scipy
+python-dotenv
+
+# file input (csv/json are pandas built-in)
+openpyxl          # .xlsx / .xlsm
+xlrd              # legacy .xls
+pyxlsb            # .xlsb
+odfpy             # .ods
+pyarrow           # .parquet
+pdfplumber        # .pdf - tables + text
+python-docx       # .docx - tables + paragraphs
+
+# agent + tools
+langchain
+langchain-core
+langchain-community
+langchain-anthropic
+langchain-experimental   # PythonAstREPLTool - the EDA code-runner tool
+langgraph
+tabulate                 # df.to_markdown() -> feed schema/samples to the LLM
+
+# chat UI + charts
+streamlit
+plotly
+matplotlib
+seaborn
+
+# notebooks / misc
+jupyter
+requests

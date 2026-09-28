@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Virtual env
+.venv/
+venv/
+
+# Secrets
+.env
+*.key
+
+# Data - user uploads & generated output
+data/
+uploads/
+outputs/
+*.csv
+*.xlsx
+*.xls
+*.xlsb
+*.ods
+*.parquet
+*.pdf
+*.docx
+
+# Streamlit
+.streamlit/secrets.toml
+
+# macOS / editors
+.DS_Store
+.vscode/
+.idea/
