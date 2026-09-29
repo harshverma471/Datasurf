@@ -1,33 +1,37 @@
+# DataSurf — requires Python 3.10+ (FastMCP). Built and pinned against 3.12.
+# See plans/datasurf-plan.md §11 for why each line is here.
+
 # core data
 pandas
 numpy
-scipy
+scipy                    # preset statistics: effect sizes, decomposition, outliers
 python-dotenv
 
+# query engine
+duckdb                   # model-authored SQL over registered dataframes
+
 # file input (csv/json are pandas built-in)
-openpyxl          # .xlsx / .xlsm
-xlrd              # legacy .xls
-pyxlsb            # .xlsb
-odfpy             # .ods
-pyarrow           # .parquet
-pdfplumber        # .pdf - tables + text
-python-docx       # .docx - tables + paragraphs
+openpyxl                 # .xlsx / .xlsm
+pyarrow                  # parquet artifact store + duckdb interop
+pdfplumber               # .pdf text + tables
 
 # agent + tools
-langchain
-langchain-core
-langchain-community
-langchain-anthropic
-langchain-experimental   # PythonAstREPLTool - the EDA code-runner tool
 langgraph
-tabulate                 # df.to_markdown() -> feed schema/samples to the LLM
+langchain-core
+langchain-openai         # OpenRouter via its OpenAI-compatible endpoint
+openai                   # direct client backing agent/llm.py
+pydantic>=2
+fastmcp>=2               # MCP tool server; pulls the `mcp` SDK — do not pin both
+tabulate                 # df.to_markdown() when building schema cards
 
-# chat UI + charts
+# UI + charts
 streamlit
 plotly
-matplotlib
-seaborn
 
-# notebooks / misc
-jupyter
-requests
+# dev
+pytest
+
+# --- deferred: add when the phase that needs it arrives ---
+# sentence-transformers  # P3, local MiniLM embeddings. Pulls torch (~2GB) — not worth it until the PDF lane exists.
+# langchain-experimental # P4+, only if the guarded Python escape hatch actually lands.
+# xlrd / pyxlsb / odfpy / python-docx  # add each when a real file forces it; openpyxl covers the demo.

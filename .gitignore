@@ -14,7 +14,9 @@ venv/
 *.key
 
 # Data - user uploads & generated output
-data/
+# `data/*` not `data/`: git will not descend into an excluded directory, so a
+# negation can never rescue a file whose parent directory is excluded.
+data/*
 uploads/
 outputs/
 *.csv
@@ -25,6 +27,12 @@ outputs/
 *.parquet
 *.pdf
 *.docx
+
+# ...but the synthetic test fixtures ship with the repo — the evals must be
+# reproducible, and committed fixtures keep real data away from a third-party
+# endpoint. These negations must come after the patterns they override.
+!data/fixtures/
+!data/fixtures/**
 
 # Streamlit
 .streamlit/secrets.toml
